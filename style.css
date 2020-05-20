@@ -1,0 +1,47 @@
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+  list-style: none;
+  }
+
+#search-tab {
+    float: left;
+    width: 20px;
+    max-width: 70%;
+}
+
+/* this doesnt show up because it already has a class name
+#search-city {
+    padding-bottom: 20px;
+} */
+
+#list-buttons {
+    align-self: left;
+    margin: 0px;
+    padding: 0px;
+}
+
+#city-button {
+    width: 200px;
+    align-self: left;
+}
+
+.card-one, .card-two, .card-three, .card-four, .card-five {
+    float: right;
+    max-width: 15%;
+    max-height: 15%;
+}
+
+.card-body {
+    border-style: double;
+    margin: 10%;
+}
+
+.card-title, .card-text {
+    text-align: left;
+    padding: 0%;
+}
