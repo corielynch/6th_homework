@@ -10,8 +10,8 @@ body {
 
 #search-tab {
     float: left;
-    width: 20px;
-    max-width: 70%;
+    /* width: 20px; */
+    /* max-width: 70%; */
 }
 
 /* this doesnt show up because it already has a class name
@@ -34,14 +34,27 @@ body {
     float: right;
     max-width: 15%;
     max-height: 15%;
+    min-width: 100px;
+    justify-items: stretch;
+
+
 }
 
 .card-body {
-    border-style: double;
+    border-style: solid;
     margin: 10%;
+    padding: 0%;
+    background-color: lightblue
+
 }
 
 .card-title, .card-text {
     text-align: left;
     padding: 0%;
+}
+
+.display {
+    border-style: solid;
+    min-height: 400px;
+    min-width: 100px;
 }
