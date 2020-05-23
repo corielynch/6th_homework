@@ -58,3 +58,12 @@ body {
     min-height: 400px;
     min-width: 100px;
 }
+
+.temperature-display, .humidity-disdplay, .wind-speed-display, .uv-index-display {
+    float: left;
+    min-width: 650px;
+    min-height: 15px;
+}
+
+#history {
+}
