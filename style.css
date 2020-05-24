@@ -31,20 +31,21 @@ body {
 }
 
 .card-one, .card-two, .card-three, .card-four, .card-five {
-    float: right;
-    max-width: 15%;
-    max-height: 15%;
-    min-width: 100px;
-    justify-items: stretch;
+    border-style: solid;
+
+    background-color: lightblue
 
 
 }
 
 .card-body {
-    border-style: solid;
-    margin: 10%;
+    /* /* margin: 10%;
     padding: 0%;
-    background-color: lightblue
+    float: right; */
+    max-width: 15%; 
+    max-height: 15%;
+    min-width: 150px;
+    justify-items: stretch;
 
 }
 
