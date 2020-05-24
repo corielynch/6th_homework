@@ -7,6 +7,16 @@ $(document).ready(function () {
 //URL for City, Temp, Humidity, Wind Speed
     var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey;
 
+//Append search items to History
+var input = $(".form-control");
+localStorage.setItem(".form-control", input.val());
+
+var storedValue = localStorage.getItem(".form-control");
+
+//THIS PART DOESNT WORK TO APPEND NEW BUTTON!!!/////
+// var searchHistory = $("#historybtn");
+// ("#historybtn").append(storedValue);
+
 
 
 //AJAX call for City, Temp, Humidity, Wind Speed
@@ -16,26 +26,45 @@ $(document).ready(function () {
         datatype: "JSON"
       })
 
+
 //Retrieving forecast data
       .then(function(response) {
-        console.log(response.list)
+        var dayOne = $("#dayOneForecast");
+        var dayTwo = $("#dayTwoForecast");
 
         for (let i=0; i < response.list.length; i++) {
           var item = (response.list[i]);
     
           if (item.dt_txt.indexOf("12:00:00") != -1) {
             var date = new Date(item.dt_txt);
+            console.log(date);
+
+//Forecast Day 1
             $(".card-one .card-date").text("Date: " + date);
+            dayOne.append(".card-date");
 
             var temp = (item.main.temp - 273.15) * 1.80 + 32;
             $(".card-temp").text("Temp: " + temp.toFixed(2)+ "°F");
+            dayOne.append(temp);
+
+            var humidity = (item.main.humidity);
+            $(".card-humidity").text("Humidity: " + humidity + "%");
+
+//Forecast Day 2
+            $(".card-two .card-date").text("Date: " + date);
+            dayTwo.append(".card-date-two");
+
+            var temp = (item.main.temp - 273.15) * 1.80 + 32;
+            $(".card-temp-two").text("Temp: " + temp.toFixed(2)+ "°F");
+            dayTwo.append(temp);
 
             var humidity = (item.main.humidity);
             $(".card-humidity").text("Humidity: " + humidity + "%");
           }
 
 //For loop for days 2-5 of forecast
-          for (let i=0; i < response.list.length; i++)
+          // for (let i=0; i < response.list.length; i++)
+          
 
         
 

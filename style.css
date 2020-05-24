@@ -46,6 +46,8 @@ body {
     max-height: 15%;
     min-width: 150px;
     justify-items: stretch;
+    text-align: left;
+
 
 }
 
@@ -66,5 +68,7 @@ body {
     min-height: 15px;
 }
 
-#history {
+ul {
+    list-style: none;
+    padding: 0px;
 }
