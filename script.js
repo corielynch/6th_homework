@@ -1,6 +1,12 @@
 $(document).ready(function () {
   $("#button-addon1").click(function(){
     event.preventDefault(); 
+
+    // $("#button-addon1").on('click', function() {
+    //   $(".row-cards").show(event);
+    // });
+
+
    
     var city = $(".form-control").val();
     var APIKey = "438d21396eadb2777d54f41c8be79e21";
@@ -13,6 +19,7 @@ var input = $(".form-control");
 localStorage.setItem(".form-control", input.val());
 
 var storedValue = localStorage.getItem(".form-control");
+
 
 
 
