@@ -1,13 +1,6 @@
 $(document).ready(function () {
   $("#button-addon1").click(function(){
     event.preventDefault(); 
-
-    // $("#button-addon1").on('click', function() {
-    //   $(".row-cards").show(event);
-    // });
-
-
-   
     var city = $(".form-control").val();
     var APIKey = "438d21396eadb2777d54f41c8be79e21";
 
@@ -20,17 +13,12 @@ localStorage.setItem(".form-control", input.val());
 
 var storedValue = localStorage.getItem(".form-control");
 
-
-
-
-
 //AJAX call for City, Temp, Humidity, Wind Speed
     $.ajax({
         url: queryURL,
         method: "GET",
         datatype: "JSON"
       })
-
 
 //Retrieving main city weather data
       .then(function(response) {
