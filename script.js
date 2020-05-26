@@ -1,6 +1,7 @@
 $(document).ready(function () {
   $("#button-addon1").click(function(){
     event.preventDefault(); 
+   
     var city = $(".form-control").val();
     var APIKey = "438d21396eadb2777d54f41c8be79e21";
 
@@ -13,9 +14,6 @@ localStorage.setItem(".form-control", input.val());
 
 var storedValue = localStorage.getItem(".form-control");
 
-//THIS PART DOESNT WORK TO APPEND NEW BUTTON!!!/////
-// var searchHistory = $("#historybtn");
-// ("#historybtn").append(storedValue);
 
 
 
@@ -27,51 +25,17 @@ var storedValue = localStorage.getItem(".form-control");
       })
 
 
-//Retrieving forecast data
+//Retrieving main city weather data
       .then(function(response) {
-        var dayOne = $("#dayOneForecast");
-        var dayTwo = $("#dayTwoForecast");
-
+        
         for (let i=0; i < response.list.length; i++) {
           var item = (response.list[i]);
     
           if (item.dt_txt.indexOf("12:00:00") != -1) {
             var date = new Date(item.dt_txt);
-            console.log(date);
+        }}
 
-//Forecast Day 1
-            $(".card-one .card-date").text("Date: " + date);
-            dayOne.append(".card-date");
-
-            var temp = (item.main.temp - 273.15) * 1.80 + 32;
-            $(".card-temp").text("Temp: " + temp.toFixed(2)+ "°F");
-            dayOne.append(temp);
-
-            var humidity = (item.main.humidity);
-            $(".card-humidity").text("Humidity: " + humidity + "%");
-
-//Forecast Day 2
-            $(".card-two .card-date").text("Date: " + date);
-            dayTwo.append(".card-date-two");
-
-            var temp = (item.main.temp - 273.15) * 1.80 + 32;
-            $(".card-temp-two").text("Temp: " + temp.toFixed(2)+ "°F");
-            dayTwo.append(temp);
-
-            var humidity = (item.main.humidity);
-            $(".card-humidity").text("Humidity: " + humidity + "%");
-          }
-
-//For loop for days 2-5 of forecast
-          // for (let i=0; i < response.list.length; i++)
-          
-
-        
-
-
-
-        
-// Convert the Temp to Fahrenheit
+    // Convert the Temp to Fahrenheit
 var tempF = (response.list[0].main.temp - 273.15) * 1.80 + 32;
 
 // Transfer content to HTML
@@ -96,16 +60,26 @@ $(".wind-speed-display").text("Wind speed: " + response.list[0].wind.speed + " M
     })
 
     .then(function(response) {
-      
-      
       $(".uv-index-display").text("UV Index: " + response.value + " %");
-        
       });
-    }});
+    
 
-    //       Saves input info to local storage
-  // $(".description9am").val(localStorage.getItem("#btn9am"))
+//5 Day Forecast
+for (i = 0; i <= 5; i++) {
+  j = 4 + (8 * i)
+
+  forecastDate = response.list[j].dt_txt;
+  forecastTemp = response.list[j].main.temp;
+  forecastHumidity = response.list[j].main.humidity;
+
+  $(".card-date-" + i).text("Date: " + forecastDate);
   
+  var forecastTemp = (forecastTemp - 273.15) * 1.80 + 32;
+  $(".card-temp-" + i).text("Temp: " + forecastTemp.toFixed(2)+ "°F");
   
-})
-});
+  $(".card-humidity-" + i).text("Humidity: " + forecastHumidity + "%");
+
+
+
+  }})})
+});   
