@@ -6,12 +6,11 @@ body {
 .navbar {
     display: flex;
     justify-content: center;
-  list-style: none;
+    list-style: none;
   }
 
 #search-tab {
     float: left;
-    
 }
 
 #list-buttons {
@@ -31,7 +30,6 @@ body {
 }
 
 .card-body {
-    
     padding: 0%;
     float: left;
     max-width: 18%; 
@@ -39,8 +37,6 @@ body {
     justify-items: left;
     text-align: left;
     margin: 5px;
-
-
 }
 
 .card-title, .card-text {
@@ -54,7 +50,7 @@ body {
     min-width: 100px;
 }
 
-.temperature-display, .humidity-disdplay, .wind-speed-display, .uv-index-display {
+.temperature-display, .humidity-display, .wind-speed-display, .uv-index-display {
     float: left;
     min-width: 650px;
     min-height: 15px;
@@ -72,6 +68,9 @@ ul {
 
 }
 
-.col-md-8 {
-    padding: 0px;
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class="row-"] {
+      width: 100%;
+    }
 }

@@ -1,3 +1,4 @@
+//Event listener to start code based on input
 $(document).ready(function () {
   $("#button-addon1").click(function(){
     event.preventDefault(); 
@@ -21,9 +22,7 @@ var storedValue = localStorage.getItem(".form-control");
       })
 
 //Retrieving main city weather data
-      .then(function(response) {
-        console.log(response);
-        
+      .then(function(response) {        
         for (let i=0; i < response.list.length; i++) {
           var item = (response.list[i]);
     
@@ -31,10 +30,8 @@ var storedValue = localStorage.getItem(".form-control");
             var date = new Date(item.dt_txt);
         }}
 
-    // Convert the Temp to Fahrenheit
+// Convert the Temp to Fahrenheit
 var tempF = (response.list[0].main.temp - 273.15) * 1.80 + 32;
-
-
 
 // Transfer content to HTML
 $(".card-body-main").html("<h1>" + response.city.name + " Weather Details</h1>");
@@ -59,9 +56,6 @@ for (i = 0; i < 5; i++) {
   $(".card-temp-" + i).text("Temp: " + forecastTemp.toFixed(2)+ "°F");
   
   $(".card-humidity-" + i).text("Humidity: " + forecastHumidity + "%");
-
-
-
   }
 
 
