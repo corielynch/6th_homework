@@ -22,6 +22,7 @@ var storedValue = localStorage.getItem(".form-control");
 
 //Retrieving main city weather data
       .then(function(response) {
+        console.log(response);
         
         for (let i=0; i < response.list.length; i++) {
           var item = (response.list[i]);
@@ -33,6 +34,8 @@ var storedValue = localStorage.getItem(".form-control");
     // Convert the Temp to Fahrenheit
 var tempF = (response.list[0].main.temp - 273.15) * 1.80 + 32;
 
+
+
 // Transfer content to HTML
 $(".card-body-main").html("<h1>" + response.city.name + " Weather Details</h1>");
 
@@ -41,6 +44,27 @@ $(".temperature-display").text("Temp: " + tempF.toFixed(2)+ "°F");
 $(".humidity-display").text("Humidity: " + response.list[0].main.humidity + " %");
  
 $(".wind-speed-display").text("Wind speed: " + response.list[0].wind.speed + " MPH");
+
+//5 Day Forecast
+for (i = 0; i < 5; i++) {
+  j = 4 + (8 * i)
+
+  forecastDate = response.list[j].dt_txt;
+  forecastTemp = response.list[j].main.temp;
+  forecastHumidity = response.list[j].main.humidity;
+
+  $(".card-date-" + i).text("Date: " + forecastDate);
+  
+  var forecastTemp = (forecastTemp - 273.15) * 1.80 + 32;
+  $(".card-temp-" + i).text("Temp: " + forecastTemp.toFixed(2)+ "°F");
+  
+  $(".card-humidity-" + i).text("Humidity: " + forecastHumidity + "%");
+
+
+
+  }
+
+
 
 //URL for UV Index
     var lat = response.city.coord.lat;
@@ -59,22 +83,5 @@ $(".wind-speed-display").text("Wind speed: " + response.list[0].wind.speed + " M
       });
     
 
-//5 Day Forecast
-for (i = 0; i <= 5; i++) {
-  j = 4 + (8 * i)
-
-  forecastDate = response.list[j].dt_txt;
-  forecastTemp = response.list[j].main.temp;
-  forecastHumidity = response.list[j].main.humidity;
-
-  $(".card-date-" + i).text("Date: " + forecastDate);
-  
-  var forecastTemp = (forecastTemp - 273.15) * 1.80 + 32;
-  $(".card-temp-" + i).text("Temp: " + forecastTemp.toFixed(2)+ "°F");
-  
-  $(".card-humidity-" + i).text("Humidity: " + forecastHumidity + "%");
-
-
-
-  }})})
+})})
 });   
