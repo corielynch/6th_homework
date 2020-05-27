@@ -6,7 +6,7 @@ $(document).ready(function () {
     var APIKey = "438d21396eadb2777d54f41c8be79e21";
 
 //URL for City, Temp, Humidity, Wind Speed
-    var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey;
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey;
 
 //Append search items to History
 var input = $(".form-control");
